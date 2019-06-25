@@ -32,7 +32,6 @@ export class PeopleViewComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-
       this.title = params.id ? `Vizualizando Pessoa ${params.id}` : 'Visualizando';
     });
   }

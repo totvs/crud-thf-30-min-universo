@@ -2,12 +2,48 @@
 
 Este projeto foi desenvolvido no universo TOTVS, com o desafio de ser contruindo um CRUD básico utilizando THF em 30 minutos.
 
-## Metadados
+### people-list.component
 
-Campos utilizados durante o desafio.
+> HTML
+```
+<thf-page-dynamic-table
+  t-title="Pessoas"
+  t-service-api="https://thf.totvs.com.br/sample/api/people"
+  [t-actions]="actions"
+  [t-fields]="fields">
+</thf-page-dynamic-table>
+```
+
+> TS
+```
+  readonly actions: ThfPageDynamicTableActions = {
+    detail: 'people/view/:id',
+    edit: 'people/edit/:id',
+    new: 'people/new',
+    remove: true
+  };
+
+  readonly fields: Array<ThfPageDynamicTableField> = [
+    { property: 'id', key: true },
+    { property: 'name', label: 'Nome' },
+    { property: 'birthdate', label: 'Data de nascimento', type: 'date' }
+  ];
+
+```
 
 ### people-view.component
 
+> HTML
+```
+<thf-page-dynamic-detail
+  t-service-api="https://thf.totvs.com.br/sample/api/people"
+  [t-title]="title"
+  [t-actions]="actions"
+  [t-fields]="fields">
+</thf-page-dynamic-detail>
+```
+
+> TS
 ```
 fields: Array<ThfPageDynamicDetailField> = [
     { property: 'id', gridColumns: 2, key: true, divider: 'Dados pessoais' },
@@ -22,6 +58,17 @@ fields: Array<ThfPageDynamicDetailField> = [
 
 ### people-form.component
 
+> HTML
+```
+<thf-page-dynamic-edit
+  t-service-api="https://thf.totvs.com.br/sample/api/people"
+  [t-title]="title"
+  [t-actions]="actions"
+  [t-fields]="fields">
+</thf-page-dynamic-edit>
+```
+
+> TS
 ```
 fields: Array<ThfPageDynamicEditField> = [
     { property: 'id', key: true, visible: false },

@@ -7,7 +7,7 @@ import { ThfPageDynamicTableActions, ThfPageDynamicTableField } from '@totvs/thf
   templateUrl: './people-list.component.html',
   styleUrls: ['./people-list.component.css']
 })
-export class PeopleListComponent implements OnInit {
+export class PeopleListComponent {
 
   readonly actions: ThfPageDynamicTableActions = {
     detail: 'people/view/:id',
@@ -21,10 +21,5 @@ export class PeopleListComponent implements OnInit {
     { property: 'name', label: 'Nome' },
     { property: 'birthdate', label: 'Data de nascimento', type: 'date' }
   ];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

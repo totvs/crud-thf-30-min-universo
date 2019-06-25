@@ -33,7 +33,6 @@ export class PeopleFormComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-
       this.title = params.id ? `Editando Pessoa ${params.id}` : 'Nova Pessoa';
     });
   }
