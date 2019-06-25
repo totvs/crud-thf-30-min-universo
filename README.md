@@ -2,6 +2,18 @@
 
 Este projeto foi desenvolvido no universo TOTVS, com o desafio de ser contruindo um CRUD básico utilizando THF em 30 minutos.
 
+### people-rounting.module
+
+> TS
+```
+const routes: Routes = [
+  { path: '', component: PeopleListComponent },
+  { path: 'view/:id', component: PeopleViewComponent },
+  { path: 'edit/:id', component: PeopleFormComponent },
+  { path: 'new', component: PeopleFormComponent }
+];
+```
+
 ### people-list.component
 
 > HTML
@@ -45,7 +57,15 @@ Este projeto foi desenvolvido no universo TOTVS, com o desafio de ser contruindo
 
 > TS
 ```
-fields: Array<ThfPageDynamicDetailField> = [
+  title = 'Visualizando';
+
+  readonly actions: ThfPageDynamicDetailActions = {
+    back: '/',
+    edit: 'people/edit/:id',
+    remove: '/'
+  };
+
+  readonly fields: Array<ThfPageDynamicDetailField> = [
     { property: 'id', gridColumns: 2, key: true, divider: 'Dados pessoais' },
     { property: 'name', label: 'Nome', gridXlColumns: 4, gridLgColumns: 4 },
     { property: 'birthdate', type: 'date', label: 'Data de aniversário', gridXlColumns: 4, gridLgColumns: 4 },
@@ -54,6 +74,14 @@ fields: Array<ThfPageDynamicDetailField> = [
     { property: 'city', label: 'Cidade' },
     { property: 'country', label: 'País' }
   ];
+
+  constructor(private activatedRoute: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      this.title = params.id ? `Vizualizando Pessoa ${params.id}` : 'Visualizando';
+    });
+  }
 ```
 
 ### people-form.component
