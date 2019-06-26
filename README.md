@@ -102,16 +102,32 @@ const routes: Routes = [
 
 > TS
 ```
+title = 'Nova pessoa';
+
+actions: ThfPageDynamicEditActions = {
+  cancel: '/',
+  save: '/'
+};
+
 fields: Array<ThfPageDynamicEditField> = [
-    { property: 'id', key: true, visible: false },
-    { label: 'Nome', property: 'name', divider: 'Dados pessoais' },
-    { label: 'Data de nascimento', property: 'birthdate', type: 'date' },
-    { label: 'Gênero', property: 'genre', gridXlColumns: 4, options: [
-      { value: 'feminino', label: 'Feminino' },
-      { value: 'masculino', label: 'Masculino' }
-    ]},
-    { label: 'Rua', property: 'street', divider: 'Endereço' },
-    { label: 'Cidade', property: 'city' },
-    { label: 'País', property: 'country' }
-  ];
+  { property: 'id', key: true, visible: false },
+  { label: 'Nome', property: 'name', divider: 'Dados pessoais' },
+  { label: 'Data de nascimento', property: 'birthdate', type: 'date' },
+  { label: 'Gênero', property: 'genre', gridXlColumns: 4, options: [
+    { value: 'feminino', label: 'Feminino' },
+    { value: 'masculino', label: 'Masculino' }
+  ]},
+  { label: 'Rua', property: 'street', divider: 'Endereço' },
+  { label: 'Cidade', property: 'city' },
+  { label: 'País', property: 'country' }
+];
+
+constructor(private activatedRoute: ActivatedRoute) { }
+
+ngOnInit() {
+  this.activatedRoute.params.subscribe(params => {
+    this.title = params.id ? 'Editando' : 'Nova pessoa';
+  });
+}
+
 ```
