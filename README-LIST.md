@@ -18,8 +18,12 @@ readonly menus: Array<ThfMenuItem> = [
 
 ### people.module.ts
 ```
+import { PeopleListComponent } from '../people-list/people-list.component';
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    PeopleListComponent
+  ],
   imports: [
     CommonModule,
     PeopleRoutingModule,
