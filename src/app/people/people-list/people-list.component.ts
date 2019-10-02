@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
-import { ThfPageDynamicTableActions, ThfPageDynamicTableField } from '@totvs/thf-templates';
+import { Component } from '@angular/core';
+import { PoPageDynamicTableActions, PoPageDynamicTableField } from '@portinari/portinari-templates';
 
 @Component({
   selector: 'app-people-list',
@@ -9,17 +8,16 @@ import { ThfPageDynamicTableActions, ThfPageDynamicTableField } from '@totvs/thf
 })
 export class PeopleListComponent {
 
-  readonly actions: ThfPageDynamicTableActions = {
+  readonly actions: PoPageDynamicTableActions = {
     detail: 'people/view/:id',
     edit: 'people/edit/:id',
     new: 'people/new',
     remove: true
   };
 
-  readonly fields: Array<ThfPageDynamicTableField> = [
+  readonly fields: Array<PoPageDynamicTableField> = [
     { property: 'id', key: true },
     { property: 'name', label: 'Nome' },
     { property: 'birthdate', label: 'Data de nascimento', type: 'date' }
   ];
-
 }

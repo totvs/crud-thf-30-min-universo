@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ThfMenuItem } from '@totvs/thf-ui';
+import { PoMenuItem } from '@portinari/portinari-ui';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,9 @@ import { ThfMenuItem } from '@totvs/thf-ui';
 })
 export class AppComponent {
 
-  readonly menus: Array<ThfMenuItem> = [
+  readonly menus: Array<PoMenuItem> = [
     { label: 'Pessoas', link: '/people' }
   ];
+
 
 }

@@ -1,21 +1,21 @@
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { PoModule } from '@portinari/portinari-ui';
+import { PoTemplatesModule } from '@portinari/portinari-templates';
 
-import { ThfModule } from '@totvs/thf-ui';
-import { ThfTemplatesModule } from '@totvs/thf-templates';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ThfModule,
-    ThfTemplatesModule
+    PoModule,
+    PoTemplatesModule
   ],
   exports: [
     CommonModule,
     FormsModule,
-    ThfModule,
-    ThfTemplatesModule
+    PoModule,
+    PoTemplatesModule
   ]
 })
 export class SharedModule { }
