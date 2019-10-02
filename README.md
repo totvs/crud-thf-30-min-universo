@@ -1,133 +1,27 @@
-# Implementando CRUD com THF em 30 minutos
+# CrudPortinari
 
-Este projeto foi desenvolvido no universo TOTVS, com o desafio de ser contruindo um CRUD básico utilizando THF em 30 minutos.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
 
-### Apresentação
+## Development server
 
-Link da [Apresentação](https://drive.google.com/file/d/10l3WWkuAxJavu8F_EMtrQDVztQHgfxcn/view?usp=sharing)
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### people-rounting.module
+## Code scaffolding
 
-> TS
-```
-const routes: Routes = [
-  { path: '', component: PeopleListComponent },
-  { path: 'view/:id', component: PeopleViewComponent },
-  { path: 'edit/:id', component: PeopleFormComponent },
-  { path: 'new', component: PeopleFormComponent }
-];
-```
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-### people-list.component
+## Build
 
-> HTML
-```
-<thf-page-dynamic-table
-  t-title="Pessoas"
-  t-service-api="https://thf.totvs.com.br/sample/api/people"
-  [t-actions]="actions"
-  [t-fields]="fields">
-</thf-page-dynamic-table>
-```
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-> TS
-```
-  readonly actions: ThfPageDynamicTableActions = {
-    detail: 'people/view/:id',
-    edit: 'people/edit/:id',
-    new: 'people/new',
-    remove: true
-  };
+## Running unit tests
 
-  readonly fields: Array<ThfPageDynamicTableField> = [
-    { property: 'id', key: true },
-    { property: 'name', label: 'Nome' },
-    { property: 'birthdate', label: 'Data de nascimento', type: 'date' }
-  ];
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-```
+## Running end-to-end tests
 
-### people-view.component
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-> HTML
-```
-<thf-page-dynamic-detail
-  t-service-api="https://thf.totvs.com.br/sample/api/people"
-  [t-title]="title"
-  [t-actions]="actions"
-  [t-fields]="fields">
-</thf-page-dynamic-detail>
-```
+## Further help
 
-> TS
-```
-  title = 'Visualizando';
-
-  readonly actions: ThfPageDynamicDetailActions = {
-    back: '/',
-    edit: 'people/edit/:id',
-    remove: '/'
-  };
-
-  readonly fields: Array<ThfPageDynamicDetailField> = [
-    { property: 'id', gridColumns: 2, key: true, divider: 'Dados pessoais' },
-    { property: 'name', label: 'Nome', gridXlColumns: 4, gridLgColumns: 4 },
-    { property: 'birthdate', type: 'date', label: 'Data de aniversário', gridXlColumns: 4, gridLgColumns: 4 },
-    { property: 'genre', tag: true, label: 'Gênero', gridColumns: 2, gridSmColumns: 6 },
-    { property: 'street', divider: 'Endereço', label: 'Rua' },
-    { property: 'city', label: 'Cidade' },
-    { property: 'country', label: 'País' }
-  ];
-
-  constructor(private activatedRoute: ActivatedRoute) { }
-
-  ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-      this.title = params.id ? `Vizualizando Pessoa ${params.id}` : 'Visualizando';
-    });
-  }
-```
-
-### people-form.component
-
-> HTML
-```
-<thf-page-dynamic-edit
-  t-service-api="https://thf.totvs.com.br/sample/api/people"
-  [t-title]="title"
-  [t-actions]="actions"
-  [t-fields]="fields">
-</thf-page-dynamic-edit>
-```
-
-> TS
-```
-title = 'Nova pessoa';
-
-actions: ThfPageDynamicEditActions = {
-  cancel: '/',
-  save: '/'
-};
-
-fields: Array<ThfPageDynamicEditField> = [
-  { property: 'id', key: true, visible: false },
-  { label: 'Nome', property: 'name', divider: 'Dados pessoais' },
-  { label: 'Data de nascimento', property: 'birthdate', type: 'date' },
-  { label: 'Gênero', property: 'genre', gridXlColumns: 4, options: [
-    { value: 'feminino', label: 'Feminino' },
-    { value: 'masculino', label: 'Masculino' }
-  ]},
-  { label: 'Rua', property: 'street', divider: 'Endereço' },
-  { label: 'Cidade', property: 'city' },
-  { label: 'País', property: 'country' }
-];
-
-constructor(private activatedRoute: ActivatedRoute) { }
-
-ngOnInit() {
-  this.activatedRoute.params.subscribe(params => {
-    this.title = params.id ? 'Editando' : 'Nova pessoa';
-  });
-}
-
-```
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

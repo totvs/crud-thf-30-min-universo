@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PoPageDynamicDetailActions, PoPageDynamicDetailField } from '@portinari/portinari-templates';
 import { ActivatedRoute } from '@angular/router';
-
-import { ThfPageDynamicDetailActions, ThfPageDynamicDetailField } from '@totvs/thf-templates';
 
 @Component({
   selector: 'app-people-view',
@@ -12,13 +11,13 @@ export class PeopleViewComponent implements OnInit {
 
   title = 'Visualizando';
 
-  readonly actions: ThfPageDynamicDetailActions = {
+  readonly actions: PoPageDynamicDetailActions = {
     back: '/',
     edit: 'people/edit/:id',
     remove: '/'
   };
 
-  readonly fields: Array<ThfPageDynamicDetailField> = [
+  readonly fields: Array<PoPageDynamicDetailField> = [
     { property: 'id', gridColumns: 2, key: true, divider: 'Dados pessoais' },
     { property: 'name', label: 'Nome', gridXlColumns: 4, gridLgColumns: 4 },
     { property: 'birthdate', type: 'date', label: 'Data de aniversário', gridXlColumns: 4, gridLgColumns: 4 },
